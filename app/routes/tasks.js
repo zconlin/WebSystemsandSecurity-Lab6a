@@ -18,5 +18,13 @@ router.get(`/:id`, async (req, res) => {
 })
 
 // TODO: Write 4 more handlers for create, read, update, and delete
+router.post(`/`, async (req, res) => {
+	try {
+		// const task =
+	} catch (error) {
+		console.error(error)
+		res.status(500).send(`Something went wrong.`)
+	}
+})
 
 module.exports = router

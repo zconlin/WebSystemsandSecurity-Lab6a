@@ -30,13 +30,14 @@ passport.deserializeUser(async (user, done) => {
 // Here you will set up a connection to Google using variables from your .env file
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
-  clientSecret: "THIS IS A BAD HARD CODED SECRET!!!",
-  callbackURL: "http://localhost:1337/api/v1/auth/google/callback",
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET, ///////////////////
+  callbackURL: `${process.env.API_ORIGIN}${process.env.GOOGLE_CALLBACK_PATH}`, ///////////////
 },
   async function (accessToken, refreshToken, profile, done) {
       try {
           // Here you will get the user from Azure using the email in the profile object
-          let user = {UserName: "Fake User", Email: "Fake Email"}
+          const { getUserFromAzure } = require('./util')////////////////////////
+          let user = await getUserFromAzure(profile.emails[0].value) ////////////////////
 
           return done(null, user);
       } catch (error) {
