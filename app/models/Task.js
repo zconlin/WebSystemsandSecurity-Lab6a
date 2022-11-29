@@ -10,7 +10,7 @@ const { Schema } = mongoose;
 const tasksSchema = new Schema({
   UserId: String, 
   Text: String,
-  Done: String,
+  Done: Boolean,
   Date: String,
 }, {collection:'Tasks'});
 
