@@ -1,4 +1,7 @@
-//////////// double check this
+const express = require(`express`)
+const router = express.Router()
+const passport = require(`passport`)
+
 router.get('/google', passport.authenticate('google', {
   scope: [ 'https://www.googleapis.com/auth/userinfo.email' ]
   }));
@@ -7,6 +10,7 @@ router.get('/google/callback', passport.authenticate('google'), async (req, res)
     // This tries to save the session, and if it fails it makes sure the passport session is deleted via req.logout()
     req.session.save(err => {
         if (err) {
+          console.log(err)
           req.logout()
           res.sendStatus(500)
         }
@@ -19,3 +23,5 @@ router.get(`/logout`, async (req,res) => {
     req.logout()
     res.redirect(process.env.CLIENT_ORIGIN)
     })
+
+module.exports = router

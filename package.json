@@ -26,11 +26,12 @@
 		"dotenv": "^8.2.0",
 		"express": "~4.16.1",
 		"express-session": "^1.17.3",
+		"mongoos": "^0.0.1-security",
 		"mongoose": "^6.7.2",
 		"morgan": "~1.9.1",
 		"passport": "^0.6.0",
 		"passport-google-oauth": "^2.0.0",
-		"tedious": "^15.1.1"
+		"tedious": "^15.1.2"
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.2"
